@@ -2,14 +2,14 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-from compiler.ast import Const
-from compiler.ast import Dict
-from compiler.ast import Discard
-from compiler.ast import List
-from compiler.ast import Module
-from compiler.ast import Node
-from compiler.ast import Stmt
-import compiler
+# from compiler.ast import Const
+# from compiler.ast import Dict
+# from compiler.ast import Discard
+# from compiler.ast import List
+# from compiler.ast import Module
+# from compiler.ast import Node
+# from compiler.ast import Stmt
+# import compiler
 import gyp.common
 import gyp.simple_copy
 import multiprocessing
@@ -923,7 +923,7 @@ def ExpandVariables(input, phase, variables, build_file):
                         raise GypError("%s while executing command '%s' in %s" %
                                        (e, contents, build_file))
 
-                    p_stdout, p_stderr = p.communicate('')
+                    p_stdout, p_stderr = map(lambda x: x.decode('utf8'), p.communicate(''))
 
                     if p.wait() != 0 or p_stderr:
                         sys.stderr.write(p_stderr)

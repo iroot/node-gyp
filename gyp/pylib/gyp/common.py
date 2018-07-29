@@ -347,7 +347,7 @@ def WriteOnDiff(filename):
                 prefix=os.path.split(filename)[1] + '.gyp.',
                 dir=os.path.split(filename)[0])
             try:
-                self.tmp_file = os.fdopen(tmp_fd, 'wb')
+                self.tmp_file = os.fdopen(tmp_fd, 'w')
             except Exception:
                 # Don't leave turds behind.
                 os.unlink(self.tmp_path)
