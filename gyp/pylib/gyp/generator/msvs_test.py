@@ -12,26 +12,27 @@ import io
 
 class TestSequenceFunctions(unittest.TestCase):
 
-  def setUp(self):
-    self.stderr = io.StringIO()
+    def setUp(self):
+        self.stderr = io.StringIO()
 
-  def test_GetLibraries(self):
-    self.assertEqual(
-      msvs._GetLibraries({}),
-      [])
-    self.assertEqual(
-      msvs._GetLibraries({'libraries': []}),
-      [])
-    self.assertEqual(
-      msvs._GetLibraries({'other':'foo', 'libraries': ['a.lib']}),
-      ['a.lib'])
-    self.assertEqual(
-      msvs._GetLibraries({'libraries': ['-la']}),
-      ['a.lib'])
-    self.assertEqual(
-      msvs._GetLibraries({'libraries': ['a.lib', 'b.lib', 'c.lib', '-lb.lib',
-                                   '-lb.lib', 'd.lib', 'a.lib']}),
-      ['c.lib', 'b.lib', 'd.lib', 'a.lib'])
+    def test_GetLibraries(self):
+        self.assertEqual(
+            msvs._GetLibraries({}),
+            [])
+        self.assertEqual(
+            msvs._GetLibraries({'libraries': []}),
+            [])
+        self.assertEqual(
+            msvs._GetLibraries({'other': 'foo', 'libraries': ['a.lib']}),
+            ['a.lib'])
+        self.assertEqual(
+            msvs._GetLibraries({'libraries': ['-la']}),
+            ['a.lib'])
+        self.assertEqual(
+            msvs._GetLibraries({'libraries': ['a.lib', 'b.lib', 'c.lib', '-lb.lib',
+                                              '-lb.lib', 'd.lib', 'a.lib']}),
+            ['c.lib', 'b.lib', 'd.lib', 'a.lib'])
+
 
 if __name__ == '__main__':
-  unittest.main()
+    unittest.main()
